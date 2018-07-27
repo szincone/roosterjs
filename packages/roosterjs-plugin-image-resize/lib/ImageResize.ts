@@ -30,7 +30,6 @@ export default class ImageResize implements EditorPlugin {
     private startHeight: number;
     private resizeDiv: HTMLElement;
     private direction: string;
-    public name: 'ImageResize';
 
     /**
      * Create a new instance of ImageResize
@@ -48,6 +47,13 @@ export default class ImageResize implements EditorPlugin {
         private forcePreserveRatio: boolean = false,
         private resizableImageSelector: string = 'img'
     ) {}
+
+    /**
+     * Gets name of this plugin
+     */
+    public getName() {
+        return 'ImageResize';
+    }
 
     initialize(editor: Editor) {
         this.editor = editor;

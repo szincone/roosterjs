@@ -19,7 +19,6 @@ const TEMP_TITLE_REGEX = new RegExp(
  */
 export default class HyperLink implements EditorPlugin {
     private editor: Editor;
-    public name: 'HyperLink';
 
     /**
      * Create a new instance of HyperLink class
@@ -32,6 +31,13 @@ export default class HyperLink implements EditorPlugin {
         private getTooltipCallback: (href: string) => string = href => href,
         private target?: string
     ) {}
+
+    /**
+     * Gets name of this plugin
+     */
+    public getName() {
+        return 'HyperLink';
+    }
 
     /**
      * Initialize this plugin

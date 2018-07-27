@@ -28,7 +28,6 @@ const KEY_BACKSPACE = 8;
  * 3. IME state
  */
 export default class CorePlugin implements EditorPlugin {
-    public name = 'CorePlugin';
     private editor: Editor;
     private snapshotBeforeAutoComplete: string;
     private inIME: boolean;
@@ -43,6 +42,13 @@ export default class CorePlugin implements EditorPlugin {
         private contentDiv: HTMLDivElement,
         private disableRestoreSelectionOnFocus: boolean
     ) {}
+
+    /**
+     * Gets name of this plugin
+     */
+    public getName() {
+        return 'CorePlugin';
+    }
 
     /**
      * Initialize this plugin. This should only be called from Editor

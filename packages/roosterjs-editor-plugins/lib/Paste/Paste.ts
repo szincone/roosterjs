@@ -29,7 +29,6 @@ import getInheritableStyles from './getInheritableStyles';
 export default class Paste implements EditorPlugin {
     private editor: Editor;
     private pasteDisposer: () => void;
-    public name: 'Paste';
 
     /**
      * Create an instance of Paste
@@ -40,6 +39,13 @@ export default class Paste implements EditorPlugin {
         deprecated?: boolean,
         private htmlPropertyCallbacks?: SanitizeHtmlPropertyCallback
     ) {}
+
+    /**
+     * Gets name of this plugin
+     */
+    public getName() {
+        return 'Paste';
+    }
 
     public initialize(editor: Editor) {
         this.editor = editor;
@@ -54,16 +60,21 @@ export default class Paste implements EditorPlugin {
 
     public onPluginEvent(event: PluginEvent) {
         if (event.eventType == PluginEventType.BeforePaste) {
+            this.editor.logPluginEvent(this, 'Handle BeforePaste event');
             let beforePasteEvent = <BeforePasteEvent>event;
 
             if (beforePasteEvent.pasteOption == PasteOption.PasteHtml) {
                 convertPastedContentFromWord(beforePasteEvent.fragment);
             }
+        } else if (event.eventType == PluginEventType.KeyDown && event.rawEvent.which == 86 && event.rawEvent.ctrlKey) {
+            this.editor.logPluginEvent(this, 'Ctrl+V detected');
         }
     }
 
     private onPaste = (event: Event) => {
+        this.editor.logPluginEvent(this, 'onPaste event detected');
         buildClipboardData(<ClipboardEvent>event, this.editor, clipboardData => {
+            this.editor.logPluginEvent(this, 'Paste content retrieved');
             if (!clipboardData.html && clipboardData.text) {
                 clipboardData.html = textToHtml(clipboardData.text);
             }
@@ -156,15 +167,18 @@ export default class Paste implements EditorPlugin {
 
             switch (pasteOption) {
                 case PasteOption.PasteHtml:
+                    this.editor.logPluginEvent(this, 'Paste as HTML');
                     this.editor.insertNode(fragment);
                     break;
 
                 case PasteOption.PasteText:
+                    this.editor.logPluginEvent(this, 'Paste as Text');
                     let html = textToHtml(clipboardData.text);
                     this.editor.insertContent(html);
                     break;
 
                 case PasteOption.PasteImage:
+                    this.editor.logPluginEvent(this, 'Paste as Merge');
                     insertImage(this.editor, clipboardData.image);
                     break;
             }

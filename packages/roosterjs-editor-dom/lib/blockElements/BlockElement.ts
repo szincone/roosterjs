@@ -115,6 +115,16 @@ function findHeadLeafNodeInBlock(node: Node, containerBlockNode: Node): Node {
             }
         }
 
+        if (isBlockElement(parentPreviousSibiling) || isBrElement(parentPreviousSibiling)) {
+            blockOrBrEncountered = true;
+            break;
+        }
+
+        // break if a block or BR is seen
+        if (blockOrBrEncountered) {
+            break;
+        }
+
         // 3) last child traversal
         while (parentPreviousSibiling && parentPreviousSibiling.lastChild) {
             parentPreviousSibiling = parentPreviousSibiling.lastChild;
@@ -175,6 +185,11 @@ function findTailLeafNodeInBlock(node: Node, containerBlockNode: Node): Node {
             } else {
                 parentNode = parentNode.parentNode;
             }
+        }
+
+        if (isBlockElement(parentNextSibiling) || isBrElement(parentNextSibiling)) {
+            blockOrBrEncountered = true;
+            break;
         }
 
         // 3) first child traversal

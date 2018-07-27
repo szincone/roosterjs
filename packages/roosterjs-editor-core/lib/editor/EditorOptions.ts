@@ -51,6 +51,12 @@ interface EditorOptions {
      * Default value is null
      */
     coreApiOverride?: Partial<CoreApiMap>;
+
+    /**
+     * Whether enable logging for editor
+     * Default value is false
+     */
+    enableLogging?: boolean;
 }
 
 export default EditorOptions;

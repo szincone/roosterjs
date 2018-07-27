@@ -19,9 +19,15 @@ export default class TableResize implements EditorPlugin {
     private td: HTMLTableCellElement;
     private pageX = -1;
     private initialPageX: number;
-    public name: 'TableResize';
 
     constructor(isRtl?: boolean) {}
+
+    /**
+     * Gets name of this plugin
+     */
+    public getName() {
+        return 'TableResize';
+    }
 
     initialize(editor: Editor) {
         this.editor = editor;

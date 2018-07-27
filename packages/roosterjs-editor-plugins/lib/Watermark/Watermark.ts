@@ -24,7 +24,6 @@ class Watermark implements EditorPlugin {
     private isWatermarkShowing: boolean;
     private focusDisposer: () => void;
     private blurDisposer: () => void;
-    public name: 'Watermark';
 
     /**
      * Create an instance of Watermark plugin
@@ -35,6 +34,13 @@ class Watermark implements EditorPlugin {
             fontSize: '14px',
             textColor: '#aaa',
         };
+    }
+
+    /**
+     * Gets name of this plugin
+     */
+    public getName() {
+        return 'Watermark';
     }
 
     initialize(editor: Editor) {

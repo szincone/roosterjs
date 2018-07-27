@@ -9,6 +9,7 @@ export {
     GetSelectionRange,
     HasFocus,
     InsertNode,
+    LogEvent,
     Select,
     TriggerEvent,
 } from './editor/EditorCore';

@@ -20,7 +20,6 @@ export default class Undo implements UndoService {
     private lastKeyPress: number;
     private onDropDisposer: () => void;
     private onCutDisposer: () => void;
-    public name = 'Undo';
 
     protected undoSnapshots: UndoSnapshotsService;
 
@@ -31,6 +30,13 @@ export default class Undo implements UndoService {
      * @param maxBufferSize The max buffer size for snapshots. Default value is 10MB
      */
     constructor(private preserveSnapshots?: boolean, private maxBufferSize: number = 1e7) {}
+
+    /**
+     * Gets name of this plugin
+     */
+    public getName() {
+        return 'Undo';
+    }
 
     /**
      * Initialize this plugin. This should only be called from Editor

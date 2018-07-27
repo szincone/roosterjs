@@ -39,13 +39,19 @@ export default class ContentEdit implements EditorPlugin {
     private editor: Editor;
     private featureMap: { [key: number]: GenericContentEditFeature<PluginEvent>[] } = {};
     private currentFeature: GenericContentEditFeature<PluginEvent>;
-    public name: 'ContentEdit';
 
     /**
      * Create instance of ContentEdit plugin
      * @param features An optional feature set to determine which features the plugin should provide
      */
     constructor(private featureSet?: ContentEditFeatures) {}
+
+    /**
+     * Gets name of this plugin
+     */
+    public getName() {
+        return 'ContentEdit';
+    }
 
     /**
      * Initialize this plugin

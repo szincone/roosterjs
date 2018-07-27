@@ -8,6 +8,7 @@ import focus from '../coreAPI/focus';
 import getSelectionRange from '../coreAPI/getSelectionRange';
 import hasFocus from '../coreAPI/hasFocus';
 import insertNode from '../coreAPI/insertNode';
+import logEvent from '../coreAPI/logEvent';
 import select from '../coreAPI/select';
 import triggerEvent from '../coreAPI/triggerEvent';
 import { DefaultFormat } from 'roosterjs-editor-types';
@@ -19,7 +20,7 @@ export default function createEditorCore(
 ): EditorCore {
     let undo = options.undo || new Undo();
     let corePlugin = new CorePlugin(contentDiv, options.disableRestoreSelectionOnFocus);
-    return {
+    let core: EditorCore = {
         contentDiv: contentDiv,
         document: contentDiv.ownerDocument,
         defaultFormat: calcDefaultFormat(contentDiv, options.defaultFormat),
@@ -32,6 +33,13 @@ export default function createEditorCore(
         api: createCoreApiMap(options.coreApiOverride),
         defaultApi: createCoreApiMap(),
     };
+
+    if (!options.enableLogging) {
+        // If logging is not enabled, use an empty function instead
+        core.api.logEvent = () => {}
+    }
+
+    return core;
 }
 
 function calcDefaultFormat(node: Node, baseFormat: DefaultFormat): DefaultFormat {
@@ -61,6 +69,7 @@ function createCoreApiMap(map?: Partial<CoreApiMap>): CoreApiMap {
         getSelectionRange: map.getSelectionRange || getSelectionRange,
         hasFocus: map.hasFocus || hasFocus,
         insertNode: map.insertNode || insertNode,
+        logEvent: map.logEvent || logEvent,
         select: map.select || select,
         triggerEvent: map.triggerEvent || triggerEvent,
     };

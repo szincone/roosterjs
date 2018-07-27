@@ -6,9 +6,9 @@ import { PluginEvent } from 'roosterjs-editor-types';
  */
 interface EditorPlugin {
     /**
-     * Name of a plugin. If null, editor will set its value with its class name
+     * Name of a plugin.
      */
-    name?: string;
+    getName?: () => string;
 
     /**
      * The first method that editor will call to a plugin when editor is initializing.

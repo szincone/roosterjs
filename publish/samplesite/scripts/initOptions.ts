@@ -131,7 +131,8 @@ export function initEditorForOptions() {
     }
     let editorOptions: EditorOptions = {
         plugins: plugins,
-        defaultFormat: defaultFormat
+        defaultFormat: defaultFormat,
+        enableLogging: true,
     };
 
     setCurrentEditor(

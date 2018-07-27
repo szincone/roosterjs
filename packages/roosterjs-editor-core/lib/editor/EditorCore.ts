@@ -93,6 +93,7 @@ export type Focus = (core: EditorCore) => void;
 export type GetSelectionRange = (core: EditorCore, tryGetFromCache: boolean) => Range;
 export type HasFocus = (core: EditorCore) => boolean;
 export type InsertNode = (core: EditorCore, node: Node, option: InsertOption) => boolean;
+export type LogEvent = (core: EditorCore, source: string, content: string) => void;
 export type Select = (core: EditorCore, arg1: any, arg2?: any, arg3?: any, arg4?: any) => boolean;
 export type TriggerEvent = (core: EditorCore, pluginEvent: PluginEvent, broadcast: boolean) => void;
 
@@ -143,6 +144,14 @@ export interface CoreApiMap {
      * @param option An insert option object to specify how to insert the node
      */
     insertNode: InsertNode;
+
+    /**
+     * Log an event in console
+     * @param core The EditorCore object. No op if null.
+     * @param source A source string, describes where this log comes from
+     * @param content The log content
+     */
+    logEvent: LogEvent;
 
     /**
      * Select content

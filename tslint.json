@@ -50,7 +50,6 @@
       true,
       "debug",
       "info",
-      "log",
       "time",
       "timeEnd",
       "trace"
@@ -104,5 +103,5 @@
   "rulesDirectory": [
         "node_modules/tslint-microsoft-contrib",
         "node_modules/tslint-eslint-rules/dist/rules"
-  ]  
+  ]
 }

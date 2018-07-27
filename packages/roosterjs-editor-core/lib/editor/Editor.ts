@@ -31,6 +31,7 @@ import {
     removeMarker,
     wrap,
 } from 'roosterjs-editor-dom';
+import EditorPlugin from './EditorPlugin';
 
 /**
  * RoosterJs core editor class
@@ -715,6 +716,11 @@ export default class Editor {
                 callback();
             }
         });
+    }
+
+    public logPluginEvent(plugin: EditorPlugin, content: string) {
+        let source = (plugin && plugin.getName && plugin.getName()) || 'Unknown Plugin';
+        this.core.api.logEvent(this.core, source, content);
     }
 
     //#endregion
