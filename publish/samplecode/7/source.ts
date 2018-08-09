@@ -1,4 +1,4 @@
-import { Editor, EditorPlugin } from 'roosterjs-editor-core';
+import { IEditor, EditorPlugin } from 'roosterjs-editor-core';
 import { PluginEvent, PluginEventType } from 'roosterjs-editor-types';
 import { createEditor } from 'roosterjs';
 
@@ -19,9 +19,9 @@ const KEY_9 = 0x39;
 
 // This plugin will insert an English word when user is inputting numbers
 class MyPlugin implements EditorPlugin {
-    private editor: Editor;
+    private editor: IEditor;
 
-    initialize(editor: Editor) {
+    initialize(editor: IEditor) {
         this.editor = editor;
     }
 

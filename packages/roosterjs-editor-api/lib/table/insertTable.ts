@@ -1,4 +1,4 @@
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 import { TableFormat, PositionType, ChangeSource } from 'roosterjs-editor-types';
 import formatTable from './formatTable';
 
@@ -12,7 +12,7 @@ import formatTable from './formatTable';
  * background color: #FFF; border color: #ABABAB
  */
 export default function insertTable(
-    editor: Editor,
+    editor: IEditor,
     columns: number,
     rows: number,
     format?: TableFormat

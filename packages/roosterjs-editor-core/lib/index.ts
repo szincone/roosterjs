@@ -15,6 +15,7 @@ export {
 } from './editor/EditorCore';
 export { default as EditorOptions } from './editor/EditorOptions';
 export { default as EditorPlugin } from './editor/EditorPlugin';
+export { default as IEditor } from './editor/IEditor';
 export { default as Undo } from './undo/Undo';
 export { default as UndoSnapshotsService } from './undo/UndoSnapshots';
 export { default as UndoService } from './editor/UndoService';

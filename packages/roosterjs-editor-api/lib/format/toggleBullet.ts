@@ -1,6 +1,6 @@
 import processList from './processList';
 import { ChangeSource, DocumentCommand } from 'roosterjs-editor-types';
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 
 /**
  * Toggle bullet at selection
@@ -10,7 +10,7 @@ import { Editor } from 'roosterjs-editor-core';
  * browser execCommand API
  * @param editor The editor instance
  */
-export default function toggleBullet(editor: Editor) {
+export default function toggleBullet(editor: IEditor) {
     editor.focus();
     editor.addUndoSnapshot(
         () => processList(editor, DocumentCommand.InsertUnorderedList),

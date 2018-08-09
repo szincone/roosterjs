@@ -1,5 +1,5 @@
 import { ContentEditFeature, GenericContentEditFeature, Keys } from '../ContentEditFeatures';
-import { Editor, cacheGetContentSearcher } from 'roosterjs-editor-core';
+import { IEditor, cacheGetContentSearcher } from 'roosterjs-editor-core';
 import { Indentation, PluginKeyboardEvent, ContentChangedEvent } from 'roosterjs-editor-types';
 import { Browser, Position, getTagOfNode, isNodeEmpty } from 'roosterjs-editor-dom';
 import {
@@ -147,7 +147,7 @@ export function getSmartOrderedList(
     };
 }
 
-function toggleListAndPreventDefault(event: PluginKeyboardEvent, editor: Editor) {
+function toggleListAndPreventDefault(event: PluginKeyboardEvent, editor: IEditor) {
     let listInfo = cacheGetListElement(event, editor);
     if (listInfo) {
         let listElement = listInfo[0];
@@ -162,7 +162,7 @@ function toggleListAndPreventDefault(event: PluginKeyboardEvent, editor: Editor)
     }
 }
 
-function cacheGetListElement(event: PluginKeyboardEvent, editor: Editor) {
+function cacheGetListElement(event: PluginKeyboardEvent, editor: IEditor) {
     let li = cacheGetNodeAtCursor(editor, event, ['LI', 'TABLE']);
     let listElement = li && getTagOfNode(li) == 'LI' && getNodeAtCursor(editor, ['UL', 'OL'], li);
     return listElement ? [listElement, li] : null;

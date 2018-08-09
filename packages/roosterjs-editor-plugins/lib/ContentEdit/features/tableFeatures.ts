@@ -1,5 +1,5 @@
 import { ContentEditFeature, Keys } from '../ContentEditFeatures';
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 import { PluginEvent, PositionType } from 'roosterjs-editor-types';
 import { VTable, contains, getTagOfNode } from 'roosterjs-editor-dom';
 import { cacheGetNodeAtCursor, getNodeAtCursor } from 'roosterjs-editor-api';
@@ -72,7 +72,7 @@ export const UpDownInTable: ContentEditFeature = {
     isAvailable: featureSet => featureSet.upDownInTable,
 };
 
-function cacheGetTableCell(event: PluginEvent, editor: Editor): HTMLTableCellElement {
+function cacheGetTableCell(event: PluginEvent, editor: IEditor): HTMLTableCellElement {
     let firstTd = cacheGetNodeAtCursor(editor, event, ['TD', 'TH', 'LI']);
     return getTagOfNode(firstTd) == 'LI' ? null : (firstTd as HTMLTableCellElement);
 }

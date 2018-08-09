@@ -1,4 +1,4 @@
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 import { getTagOfNode, unwrap, wrap } from 'roosterjs-editor-dom';
 import toggleTagCore from './toggleTagCore';
 
@@ -13,7 +13,7 @@ const CODE_NODE_TAG = 'CODE';
  * @param styler (Optional) The custom styler for setting the style for the code block element
  */
 export default function toggleCodeBlock(
-    editor: Editor,
+    editor: IEditor,
     styler?: (element: HTMLElement) => void
 ): void {
     toggleTagCore(editor, PRE_TAG, styler, wrapFunction, unwrapFunction);

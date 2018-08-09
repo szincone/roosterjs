@@ -1,12 +1,12 @@
 import { ChangeSource, NodeType, PositionType } from 'roosterjs-editor-types';
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 import { applyTextStyle, getTagOfNode } from 'roosterjs-editor-dom';
 
 /**
  * Apply inline style to current selection
  * @param callback The callback function to apply style
  */
-export default function applyInlineStyle(editor: Editor, callback: (element: HTMLElement) => any) {
+export default function applyInlineStyle(editor: IEditor, callback: (element: HTMLElement) => any) {
     editor.focus();
     let range = editor.getSelectionRange();
 

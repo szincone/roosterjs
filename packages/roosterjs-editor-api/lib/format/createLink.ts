@@ -1,5 +1,5 @@
 import { ChangeSource, DocumentCommand, QueryScope } from 'roosterjs-editor-types';
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 import { matchLink } from 'roosterjs-editor-dom';
 
 // Regex matching Uri scheme
@@ -48,7 +48,7 @@ function applyLinkPrefix(url: string): string {
  * If not specified and there wasn't a link, the link url will be used as display text.
  */
 export default function createLink(
-    editor: Editor,
+    editor: IEditor,
     link: string,
     altText?: string,
     displayText?: string
@@ -100,7 +100,7 @@ export default function createLink(
     }
 }
 
-function getAnchorNodeAtCursor(editor: Editor): HTMLAnchorElement {
+function getAnchorNodeAtCursor(editor: IEditor): HTMLAnchorElement {
     return editor.queryElements('a[href]', QueryScope.OnSelection)[0] as HTMLAnchorElement;
 }
 

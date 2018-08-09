@@ -8,7 +8,7 @@ import {
     splitBalancedNodeRange,
 } from 'roosterjs-editor-dom';
 import { ChangeSource, PositionType, QueryScope } from 'roosterjs-editor-types';
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 
 const ZERO_WIDTH_SPACE = '&#8203;';
 const UNWRAPPABLE_NODES = 'LI,THEAD,TBODY,TR,TD,TH'.split(',');
@@ -24,7 +24,7 @@ const DEFAULT_STYLER = (_: HTMLElement) => {};
  * @param unwrapFunction (Optional) The unwrap function
  */
 export default function toggleTagCore<T extends keyof HTMLElementTagNameMap>(
-    editor: Editor,
+    editor: IEditor,
     tag: T,
     styler?: (element: HTMLElement) => void,
     wrapFunction: (nodes: Node[]) => HTMLElement = nodes => wrap(nodes, tag),

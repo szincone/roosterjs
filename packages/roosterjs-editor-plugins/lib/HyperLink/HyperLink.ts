@@ -6,7 +6,7 @@ import {
     PluginEventType,
 } from 'roosterjs-editor-types';
 import { Browser } from 'roosterjs-editor-dom';
-import { Editor, EditorPlugin } from 'roosterjs-editor-core';
+import { IEditor, EditorPlugin } from 'roosterjs-editor-core';
 
 const TEMP_TITLE = 'istemptitle';
 const TEMP_TITLE_REGEX = new RegExp(
@@ -18,7 +18,7 @@ const TEMP_TITLE_REGEX = new RegExp(
  * An editor plugin that show a tooltip for existing link
  */
 export default class HyperLink implements EditorPlugin {
-    private editor: Editor;
+    private editor: IEditor;
     public name: 'HyperLink';
 
     /**
@@ -37,7 +37,7 @@ export default class HyperLink implements EditorPlugin {
      * Initialize this plugin
      * @param editor The editor instance
      */
-    public initialize(editor: Editor): void {
+    public initialize(editor: IEditor): void {
         this.editor = editor;
     }
 

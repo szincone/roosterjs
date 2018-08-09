@@ -1,6 +1,6 @@
 import execCommand from './execCommand';
 import { DocumentCommand } from 'roosterjs-editor-types';
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 
 /**
  * Toggle bold at selection
@@ -10,6 +10,6 @@ import { Editor } from 'roosterjs-editor-core';
  * If selection contains both bold and normal text, bold stle will be added to the whole selected text
  * @param editor The editor instance
  */
-export default function toggleBold(editor: Editor) {
+export default function toggleBold(editor: IEditor) {
     execCommand(editor, DocumentCommand.Bold);
 }

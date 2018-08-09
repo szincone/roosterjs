@@ -1,12 +1,12 @@
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 
-let editor: Editor;
+let editor: IEditor;
 
-export default function getCurrentEditor(): Editor {
+export default function getCurrentEditor(): IEditor {
     return editor;
 }
 
-export function setCurrentEditor(newEditor: Editor) {
+export function setCurrentEditor(newEditor: IEditor) {
     if (editor) {
         editor.dispose();
     }

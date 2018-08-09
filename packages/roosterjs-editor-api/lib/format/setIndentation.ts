@@ -1,4 +1,4 @@
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 import { DocumentCommand, Indentation, ChangeSource, QueryScope } from 'roosterjs-editor-types';
 import getNodeAtCursor from './getNodeAtCursor';
 import processList from './processList';
@@ -11,7 +11,7 @@ import processList from './processList';
  * @param indentation The indentation option:
  * Indentation.Increase to increase indentation or Indentation.Decrease to decrease indentation
  */
-export default function setIndentation(editor: Editor, indentation: Indentation) {
+export default function setIndentation(editor: IEditor, indentation: Indentation) {
     let command =
         indentation == Indentation.Increase ? DocumentCommand.Indent : DocumentCommand.Outdent;
     editor.addUndoSnapshot(() => {

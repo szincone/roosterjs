@@ -1,13 +1,13 @@
 import * as TestHelper from '../TestHelper';
 import setDirection from '../../format/setDirection';
 import { Direction } from 'roosterjs-editor-types';
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 
 describe('setDirection()', () => {
     let testID = 'setDirection';
     let originalContent =
         '<div id="text" style="font-size: 12pt; font-family: Calibri, Arial, Helvetica, sans-serif; color: rgb(0, 0, 0);">text</div>';
-    let editor: Editor;
+    let editor: IEditor;
 
     beforeEach(() => {
         editor = TestHelper.initEditor(testID);

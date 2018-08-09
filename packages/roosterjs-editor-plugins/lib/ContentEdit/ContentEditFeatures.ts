@@ -1,5 +1,5 @@
 import { ChangeSource, PluginKeyboardEvent, PluginEvent } from 'roosterjs-editor-types';
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 
 /**
  * Feature set for ContentEdit plugin.
@@ -117,10 +117,10 @@ export function getDefaultContentEditFeatures(): ContentEditFeatures {
 
 export interface GenericContentEditFeature<TEvent extends PluginEvent> {
     keys: number[];
-    initialize?: (editor: Editor) => any;
+    initialize?: (editor: IEditor) => any;
     isAvailable: (featureSet: ContentEditFeatures) => void;
-    shouldHandleEvent: (event: TEvent, editor: Editor) => any;
-    handleEvent: (event: TEvent, editor: Editor) => ChangeSource | void;
+    shouldHandleEvent: (event: TEvent, editor: IEditor) => any;
+    handleEvent: (event: TEvent, editor: IEditor) => ChangeSource | void;
     allowFunctionKeys?: boolean;
 }
 

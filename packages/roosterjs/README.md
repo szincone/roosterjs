@@ -62,7 +62,7 @@ an "a" is typed in the editor:
 
 ```typescript
 class HelloRooster implements EditorPlugin {
-    initialize(editor: Editor) {
+    initialize(editor: IEditor) {
     }
 
     dispose() {

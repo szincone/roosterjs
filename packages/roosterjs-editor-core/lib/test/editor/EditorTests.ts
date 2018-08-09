@@ -1,9 +1,9 @@
-import Editor from '../../editor/Editor';
+import IEditor from '../../editor/IEditor';
 import * as TestHelper from '../TestHelper';
 import { ContentPosition } from 'roosterjs-editor-types';
 import * as getSelectionRange from '../../coreAPI/getSelectionRange';
 
-let editor: Editor;
+let editor: IEditor;
 let testID = 'EditorTest';
 
 describe('Editor getSelectionRange()', () => {

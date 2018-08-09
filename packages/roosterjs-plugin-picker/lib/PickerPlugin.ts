@@ -1,6 +1,6 @@
 import { PickerDataProvider, PickerPluginOptions } from './PickerDataProvider';
 import { replaceWithNode } from 'roosterjs-editor-api';
-import { Editor, EditorPlugin, cacheGetContentSearcher } from 'roosterjs-editor-core';
+import { IEditor, EditorPlugin, cacheGetContentSearcher } from 'roosterjs-editor-core';
 import { PartialInlineElement } from 'roosterjs-editor-dom';
 import {
     PluginKeyboardEvent,
@@ -25,7 +25,7 @@ export interface EditorPickerPluginInterface extends EditorPlugin {
 }
 
 export default class EditorPickerPlugin implements EditorPickerPluginInterface {
-    private editor: Editor;
+    private editor: IEditor;
     private eventHandledOnKeyDown: boolean;
     private blockSuggestions: boolean;
     private isSuggesting: boolean;
@@ -35,7 +35,7 @@ export default class EditorPickerPlugin implements EditorPickerPluginInterface {
         private pickerOptions: PickerPluginOptions
     ) {}
 
-    public initialize(editor: Editor) {
+    public initialize(editor: IEditor) {
         this.editor = editor;
         this.dataProvider.onInitalize(
             (htmlNode: Node) => {

@@ -1,5 +1,5 @@
 import { cacheGetNodeAtCursor } from './getNodeAtCursor';
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 import { DocumentCommand, FormatState, PluginEvent, QueryScope } from 'roosterjs-editor-types';
 import { Position, getComputedStyles, getTagOfNode } from 'roosterjs-editor-dom';
 
@@ -13,7 +13,7 @@ import { Position, getComputedStyles, getTagOfNode } from 'roosterjs-editor-dom'
  * it will query the node within selection to get the info
  * @returns The format state at cursor
  */
-export default function getFormatState(editor: Editor, event?: PluginEvent): FormatState {
+export default function getFormatState(editor: IEditor, event?: PluginEvent): FormatState {
     let range = editor.getSelectionRange();
     let node = range && Position.getStart(range).normalize().node;
     let styles = node ? getComputedStyles(node) : [];

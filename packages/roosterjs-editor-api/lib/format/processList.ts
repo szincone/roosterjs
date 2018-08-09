@@ -1,6 +1,6 @@
 import getNodeAtCursor from './getNodeAtCursor';
 import { DocumentCommand } from 'roosterjs-editor-types';
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 import { fromHtml, isVoidHtmlElement, isBlockElement, Browser } from 'roosterjs-editor-dom';
 
 const TEMP_NODE_CLASS = 'ROOSTERJS_TEMP_NODE_FOR_LIST';
@@ -10,7 +10,7 @@ const TEMP_NODE_HTML = `<img class="${TEMP_NODE_CLASS}">`;
  * Browsers don't handle bullet/numbering list well, especially the formats when switching list statue
  * So we workaround it by always adding format to list element
  */
-export default function processList(editor: Editor, command: DocumentCommand): Node {
+export default function processList(editor: IEditor, command: DocumentCommand): Node {
     if (Browser.isChrome) {
         workaroundForChrome(editor);
     }
@@ -23,7 +23,7 @@ export default function processList(editor: Editor, command: DocumentCommand): N
     return newList && newList != existingList ? newList : null;
 }
 
-function workaroundForChrome(editor: Editor) {
+function workaroundForChrome(editor: IEditor) {
     let traverser = editor.getSelectionTraverser();
     let block = traverser && traverser.currentBlockElement;
     while (block) {

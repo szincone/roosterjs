@@ -1,5 +1,5 @@
 import { DocumentCommand, ChangeSource } from 'roosterjs-editor-types';
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 
 /**
  * Execute a document command
@@ -10,7 +10,7 @@ import { Editor } from 'roosterjs-editor-core';
  * @param doWorkaroundForList Optional, set to true to do workaround for list in order to keep current format.
  * Default value is false.
  */
-export default function execCommand(editor: Editor, command: DocumentCommand) {
+export default function execCommand(editor: IEditor, command: DocumentCommand) {
     editor.focus();
     let formatter = () => editor.getDocument().execCommand(command, false, null);
 

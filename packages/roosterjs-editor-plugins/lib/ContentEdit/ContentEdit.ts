@@ -1,6 +1,6 @@
 import { AutoLink } from './features/autoLinkFeatures';
 import { DefaultShortcut } from './features/shortcutFeatures';
-import { Editor, EditorPlugin } from 'roosterjs-editor-core';
+import { IEditor, EditorPlugin } from 'roosterjs-editor-core';
 import { TabInTable, UpDownInTable } from './features/tableFeatures';
 import { PluginEvent, PluginEventType } from 'roosterjs-editor-types';
 import ContentEditFeatures, {
@@ -36,7 +36,7 @@ import {
  * 8. Manage list style
  */
 export default class ContentEdit implements EditorPlugin {
-    private editor: Editor;
+    private editor: IEditor;
     private featureMap: { [key: number]: GenericContentEditFeature<PluginEvent>[] } = {};
     private currentFeature: GenericContentEditFeature<PluginEvent>;
     public name: 'ContentEdit';
@@ -51,7 +51,7 @@ export default class ContentEdit implements EditorPlugin {
      * Initialize this plugin
      * @param editor The editor instance
      */
-    public initialize(editor: Editor): void {
+    public initialize(editor: IEditor): void {
         this.editor = editor;
         let featureSet = this.featureSet || getDefaultContentEditFeatures();
         [

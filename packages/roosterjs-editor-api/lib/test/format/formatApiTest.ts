@@ -9,11 +9,11 @@ import setTextColor from '../../format/setTextColor';
 import setBackgroundColor from '../../format/setBackgroundColor';
 import setFontName from '../../format/setFontName';
 import setFontSize from '../../format/setFontSize';
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 
 describe('FormatUtils', () => {
     let testID = 'toggle';
-    let editor: Editor;
+    let editor: IEditor;
 
     beforeEach(() => {
         editor = TestHelper.initEditor(testID);

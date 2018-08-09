@@ -1,5 +1,5 @@
 import { ClipboardData, ContentPosition, DefaultFormat } from 'roosterjs-editor-types';
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 import { fromHtml } from 'roosterjs-editor-dom';
 import { getFormatState } from 'roosterjs-editor-api';
 
@@ -18,7 +18,7 @@ interface WindowForIE extends Window {
  */
 export default function buildClipboardData(
     event: ClipboardEvent,
-    editor: Editor,
+    editor: IEditor,
     callback: (clipboardData: ClipboardData) => void
 ) {
     let dataTransfer =
@@ -46,7 +46,7 @@ export default function buildClipboardData(
     }
 }
 
-function getCurrentFormat(editor: Editor): DefaultFormat {
+function getCurrentFormat(editor: IEditor): DefaultFormat {
     let format = getFormatState(editor);
     return format
         ? {
@@ -94,7 +94,7 @@ function directRetrieveHtml(event: ClipboardEvent, callback: (html: string) => v
     callback(null);
 }
 
-function retrieveHtmlViaTempDiv(editor: Editor, callback: (html: string) => void) {
+function retrieveHtmlViaTempDiv(editor: IEditor, callback: (html: string) => void) {
     // cache original selection range in editor
     let originalSelectionRange = editor.getSelectionRange();
     let tempDiv = getTempDivForPaste(editor);
@@ -109,7 +109,7 @@ function retrieveHtmlViaTempDiv(editor: Editor, callback: (html: string) => void
     });
 }
 
-function getTempDivForPaste(editor: Editor): HTMLElement {
+function getTempDivForPaste(editor: IEditor): HTMLElement {
     let tempDiv = editor.getCustomData(
         'PasteDiv',
         () => {

@@ -1,4 +1,4 @@
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 
 export interface PickerPluginOptions {
     // Constant that defines the element ID prefix to look for.
@@ -25,7 +25,7 @@ export interface PickerDataProvider {
     onInitalize: (
         commitMentionCallback: (nodeToAvoiddd: HTMLElement) => void,
         setIsSuggestingCallback: (isSuggesting: boolean) => void,
-        editor?: Editor
+        editor?: IEditor
     ) => void;
 
     // Function called when the plugin is disposed for the data provider to do any cleanup.

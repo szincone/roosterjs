@@ -1,6 +1,6 @@
 import execCommand from './execCommand';
 import { DocumentCommand } from 'roosterjs-editor-types';
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 
 /**
  * Toggle superscript at selection
@@ -12,6 +12,6 @@ import { Editor } from 'roosterjs-editor-core';
  * execCommand API
  * @param editor The editor instance
  */
-export default function toggleSuperscript(editor: Editor) {
+export default function toggleSuperscript(editor: IEditor) {
     execCommand(editor, DocumentCommand.Superscript);
 }

@@ -16,7 +16,7 @@ import {
     getNextLeafSibling,
     sanitizeHtml,
 } from 'roosterjs-editor-dom';
-import { Editor, EditorPlugin } from 'roosterjs-editor-core';
+import { IEditor, EditorPlugin } from 'roosterjs-editor-core';
 import { insertImage } from 'roosterjs-editor-api';
 import buildClipboardData from './buildClipboardData';
 import convertPastedContentFromWord from './wordConverter/convertPastedContentFromWord';
@@ -27,7 +27,7 @@ import getInheritableStyles from './getInheritableStyles';
  * Paste plugin, handles onPaste event and paste content into editor
  */
 export default class Paste implements EditorPlugin {
-    private editor: Editor;
+    private editor: IEditor;
     private pasteDisposer: () => void;
     public name: 'Paste';
 
@@ -41,7 +41,7 @@ export default class Paste implements EditorPlugin {
         private htmlPropertyCallbacks?: SanitizeHtmlPropertyCallback
     ) {}
 
-    public initialize(editor: Editor) {
+    public initialize(editor: IEditor) {
         this.editor = editor;
         this.pasteDisposer = editor.addDomEventHandler('paste', this.onPaste);
     }

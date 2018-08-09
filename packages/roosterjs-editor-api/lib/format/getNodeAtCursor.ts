@@ -1,4 +1,4 @@
-import { Editor, cacheGetEventData } from 'roosterjs-editor-core';
+import { IEditor, cacheGetEventData } from 'roosterjs-editor-core';
 import { PluginEvent } from 'roosterjs-editor-types';
 import { getTagOfNode, getElementOrParentElement } from 'roosterjs-editor-dom';
 
@@ -11,7 +11,7 @@ import { getTagOfNode, getElementOrParentElement } from 'roosterjs-editor-dom';
  * @returns The node at cursor or the nearest ancestor with the tag name is specified
  */
 export default function getNodeAtCursor(
-    editor: Editor,
+    editor: IEditor,
     expectedTags?: string | string[],
     startNode?: Node
 ): Node {
@@ -58,7 +58,7 @@ export default function getNodeAtCursor(
  * @returns The element at cursor or the nearest ancestor with the tag name is specified
  */
 export function cacheGetNodeAtCursor(
-    editor: Editor,
+    editor: IEditor,
     event: PluginEvent,
     expectedTags: string | string[]
 ): Node {

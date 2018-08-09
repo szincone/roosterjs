@@ -1,5 +1,6 @@
 import EditorCore from './EditorCore';
 import EditorOptions from './EditorOptions';
+import IEditor from './IEditor';
 import createEditorCore from './createEditorCore';
 import {
     ChangeSource,
@@ -35,7 +36,7 @@ import {
 /**
  * RoosterJs core editor class
  */
-export default class Editor {
+export default class Editor implements IEditor {
     private core: EditorCore;
     private eventDisposers: (() => void)[];
     private contenteditableChanged: boolean;

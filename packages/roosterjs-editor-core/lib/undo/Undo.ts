@@ -1,7 +1,7 @@
-import UndoSnapshots, { UndoSnapshotsService } from './UndoSnapshots';
-import { ChangeSource, PluginEvent, PluginEventType } from 'roosterjs-editor-types';
-import Editor from '../editor/Editor';
 import UndoService from '../editor/UndoService';
+import UndoSnapshots, { UndoSnapshotsService } from './UndoSnapshots';
+import IEditor from '../editor/IEditor';
+import { ChangeSource, PluginEvent, PluginEventType } from 'roosterjs-editor-types';
 
 const KEY_BACKSPACE = 8;
 const KEY_DELETE = 46;
@@ -14,7 +14,7 @@ const KEY_DOWN = 40;
  * Provides snapshot based undo service for Editor
  */
 export default class Undo implements UndoService {
-    private editor: Editor;
+    private editor: IEditor;
     private isRestoring: boolean;
     private hasNewContent: boolean;
     private lastKeyPress: number;
@@ -36,7 +36,7 @@ export default class Undo implements UndoService {
      * Initialize this plugin. This should only be called from Editor
      * @param editor Editor instance
      */
-    public initialize(editor: Editor): void {
+    public initialize(editor: IEditor): void {
         this.editor = editor;
         this.onDropDisposer = this.editor.addDomEventHandler('drop', this.onNativeEvent);
         this.onCutDisposer = this.editor.addDomEventHandler('cut', this.onNativeEvent);

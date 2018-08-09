@@ -1,4 +1,4 @@
-import { Editor, EditorPlugin } from 'roosterjs-editor-core';
+import { IEditor, EditorPlugin } from 'roosterjs-editor-core';
 import {
     ContentChangedEvent,
     ChangeSource,
@@ -23,7 +23,7 @@ const CTRL_KEYCODE = 17;
 const ALT_KEYCODE = 18;
 
 export default class ImageResize implements EditorPlugin {
-    private editor: Editor;
+    private editor: IEditor;
     private startPageX: number;
     private startPageY: number;
     private startWidth: number;
@@ -50,7 +50,7 @@ export default class ImageResize implements EditorPlugin {
         private resizableImageSelector: string = 'img'
     ) {}
 
-    initialize(editor: Editor) {
+    initialize(editor: IEditor) {
         this.editor = editor;
         this.dragStartDisposer = editor.addDomEventHandler('dragstart', this.onDragStart);
     }

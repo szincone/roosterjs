@@ -1,4 +1,4 @@
-import { Editor, EditorPlugin } from 'roosterjs-editor-core';
+import { IEditor, EditorPlugin } from 'roosterjs-editor-core';
 import { contains, fromHtml, getComputedStyle, VTable } from 'roosterjs-editor-dom';
 import { getNodeAtCursor } from 'roosterjs-editor-api';
 import {
@@ -14,7 +14,7 @@ const HANDLE_WIDTH = 6;
 const CONTAINER_HTML = `<div style="position: fixed; cursor: col-resize; width: ${HANDLE_WIDTH}px; border: solid 0 #C6C6C6;"></div>`;
 
 export default class TableResize implements EditorPlugin {
-    private editor: Editor;
+    private editor: IEditor;
     private onMouseOverDisposer: () => void;
     private td: HTMLTableCellElement;
     private pageX = -1;
@@ -23,7 +23,7 @@ export default class TableResize implements EditorPlugin {
 
     constructor(isRtl?: boolean) {}
 
-    initialize(editor: Editor) {
+    initialize(editor: IEditor) {
         this.editor = editor;
         this.onMouseOverDisposer = this.editor.addDomEventHandler('mouseover', this.onMouseOver);
     }

@@ -1,5 +1,5 @@
-import Editor from './Editor';
 import EditorPlugin from './EditorPlugin';
+import IEditor from './IEditor';
 import {
     ChangeSource,
     PluginCompositionEvent,
@@ -27,7 +27,7 @@ const KEY_BACKSPACE = 8;
  */
 export default class CorePlugin implements EditorPlugin {
     public name = 'CorePlugin';
-    private editor: Editor;
+    private editor: IEditor;
     private snapshotBeforeAutoComplete: string;
     private inIME: boolean;
     private disposers: (() => void)[] = null;
@@ -44,9 +44,9 @@ export default class CorePlugin implements EditorPlugin {
 
     /**
      * Initialize this plugin. This should only be called from Editor
-     * @param editor Editor instance
+     * @param editor IEditor instance
      */
-    public initialize(editor: Editor): void {
+    public initialize(editor: IEditor): void {
         this.editor = editor;
         this.disposers = [
             this.editor.addDomEventHandler('compositionstart', () => (this.inIME = true)),

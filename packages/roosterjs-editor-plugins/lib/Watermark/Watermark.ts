@@ -1,4 +1,4 @@
-import { Editor, EditorPlugin } from 'roosterjs-editor-core';
+import { IEditor, EditorPlugin } from 'roosterjs-editor-core';
 import {
     ChangeSource,
     PluginEvent,
@@ -20,7 +20,7 @@ const WATERMARK_REGEX = new RegExp(
  * A watermark plugin to manage watermark string for roosterjs
  */
 class Watermark implements EditorPlugin {
-    private editor: Editor;
+    private editor: IEditor;
     private isWatermarkShowing: boolean;
     private focusDisposer: () => void;
     private blurDisposer: () => void;
@@ -37,7 +37,7 @@ class Watermark implements EditorPlugin {
         };
     }
 
-    initialize(editor: Editor) {
+    initialize(editor: IEditor) {
         this.editor = editor;
         this.showHideWatermark(false /*ignoreCachedState*/);
         this.focusDisposer = this.editor.addDomEventHandler('focus', this.handleWatermark);

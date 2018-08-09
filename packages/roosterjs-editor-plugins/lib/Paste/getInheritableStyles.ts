@@ -1,4 +1,4 @@
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 import { Position, StyleMap, getComputedStyles } from 'roosterjs-editor-dom';
 
 // Inheritable CSS properties
@@ -7,7 +7,7 @@ const INHERITABLE_PROPERTIES = 'border-collapse,border-spacing,caption-side,colo
     ','
 );
 
-export default function getInheritableStyles(editor: Editor): StyleMap {
+export default function getInheritableStyles(editor: IEditor): StyleMap {
     let range = editor.getSelectionRange();
     let node = range && Position.getStart(range).normalize().node;
     let styles = node ? getComputedStyles(node, INHERITABLE_PROPERTIES) : [];

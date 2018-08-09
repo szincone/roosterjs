@@ -1,5 +1,5 @@
 import applyInlineStyle from './applyInlineStyle';
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 
 /**
  * Set text color at selection
@@ -8,7 +8,7 @@ import { Editor } from 'roosterjs-editor-core';
  * or hexadecimal color string (e.g, '#FF0000') or rgb value (e.g, 'rgb(255, 0, 0)') supported by browser.
  * Currently there's no validation to the string, if the passed string is invalid, it won't take affect
  */
-export default function setTextColor(editor: Editor, color: string) {
+export default function setTextColor(editor: IEditor, color: string) {
     color = color.trim();
     applyInlineStyle(editor, element => (element.style.color = color));
 }

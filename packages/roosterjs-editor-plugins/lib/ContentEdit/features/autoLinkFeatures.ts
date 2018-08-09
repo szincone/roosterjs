@@ -1,7 +1,7 @@
 import { ChangeSource, LinkData, PluginEvent, PluginEventType } from 'roosterjs-editor-types';
 import { Keys, GenericContentEditFeature } from '../ContentEditFeatures';
 import {
-    Editor,
+    IEditor,
     cacheGetEventData,
     cacheGetContentSearcher,
     clearContentSearcherCache,
@@ -23,7 +23,7 @@ export const AutoLink: GenericContentEditFeature<PluginEvent> = {
     isAvailable: featureSet => featureSet.autoLink,
 };
 
-function cacheGetLinkData(event: PluginEvent, editor: Editor): LinkData {
+function cacheGetLinkData(event: PluginEvent, editor: IEditor): LinkData {
     return event.eventType == PluginEventType.KeyDown ||
         (event.eventType == PluginEventType.ContentChanged && event.source == ChangeSource.Paste)
         ? cacheGetEventData(event, 'LINK_DATA', () => {
@@ -48,7 +48,7 @@ function cacheGetLinkData(event: PluginEvent, editor: Editor): LinkData {
         : null;
 }
 
-function autoLink(event: PluginEvent, editor: Editor) {
+function autoLink(event: PluginEvent, editor: IEditor) {
     let searcher = cacheGetContentSearcher(event, editor);
     let anchor = editor.getDocument().createElement('a');
     let linkData = cacheGetLinkData(event, editor);

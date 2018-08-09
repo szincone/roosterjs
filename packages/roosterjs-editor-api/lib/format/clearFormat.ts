@@ -7,7 +7,7 @@ import setFontName from './setFontName';
 import setFontSize from './setFontSize';
 import setTextColor from './setTextColor';
 import { DocumentCommand, ChangeSource, QueryScope } from 'roosterjs-editor-types';
-import { Editor } from 'roosterjs-editor-core';
+import { IEditor } from 'roosterjs-editor-core';
 
 const STYLES_TO_REMOVE = ['font', 'text-decoration', 'color', 'background'];
 
@@ -17,7 +17,7 @@ const STYLES_TO_REMOVE = ['font', 'text-decoration', 'color', 'background'];
  * font size/text color/background color/align left/align right/align center/superscript/subscript
  * @param editor The editor instance
  */
-export default function clearFormat(editor: Editor) {
+export default function clearFormat(editor: IEditor) {
     editor.focus();
     editor.addUndoSnapshot(() => {
         execCommand(editor, DocumentCommand.RemoveFormat);
